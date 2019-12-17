@@ -24,6 +24,7 @@ class App extends Component {
       currentMovie: undefined, // instance of customer
       movieList: [],
       customerList: [],
+      searchResults: [],
       error: '',
     }
   }
@@ -48,7 +49,7 @@ class App extends Component {
 
   }
 
-  selectItem =(itemId, typeList, currentType) => {
+  selectItem = (itemId, typeList, currentType) => {
     const updatedState = {}
     const list = this.state[typeList]
 
@@ -59,6 +60,16 @@ class App extends Component {
     updatedState[currentType] = selected
 
     this.setState(updatedState);
+  }
+
+  searchExternal = (searchTerm) => {
+    axios.get(`http://localhost:3000/movies?query=${searchTerm}`)
+    .then((response) => {
+      this.setState({searchResults: response.data});
+    })
+    .catch((error) => {
+      this.setState({error: error.message}); //maybe do a push to maintain both messages 
+    });
   }
   
   render() {
@@ -86,11 +97,9 @@ class App extends Component {
             <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
           </section>
   
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
           <Switch>
             <Route path="/search">
-              <Search />
+              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults}/>
             </Route>
             <Route path="/customers">
               <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
