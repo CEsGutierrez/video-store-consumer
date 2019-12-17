@@ -6,20 +6,7 @@ const Customer = ({id, name, registered_at, address, city, state, postal_code, p
     <div>
       {name}
     </div>
-
-
-
   )
-
-
-
 }
-
-
-
-
-
-
-
 
 export default Customer;

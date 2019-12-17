@@ -1,8 +1,23 @@
 import React from 'react';
+import Movie from './Movie';
 // import PropTypes from 'prop-types';
 
-const Library = () => {
-  return <h2>Library</h2>;
+const parseMovies = (movies) => {
+  return movies.map((movie) => {
+    return <Movie
+      key={movie.id}
+      {...movie}
+      // selectMovieCallback={props.selectMovieCallback} // will be another prop passed in
+      />
+  });
 }
 
-export default Library
+const Library = ({movieList}) => {
+  return(
+    <div>
+      {parseMovies(movieList)}
+    </div>
+  )
+}
+
+export default Library;

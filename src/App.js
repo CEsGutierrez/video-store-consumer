@@ -28,8 +28,6 @@ class App extends Component {
     }
   }
 
-
-
   componentDidMount() {
     axios.get('http://localhost:3000/movies')
     .then((response) => {
@@ -82,7 +80,7 @@ class App extends Component {
               {/* //selectCustomerCallback} */}
             </Route>
             <Route path="/library">
-              <Library />
+              <Library movieList={this.state.movieList}/>
             </Route>
             <Route path="/">
               <Home />
