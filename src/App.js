@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import Home from './components/Home'
-import Search from './components/Search'
-import Library from './components/Library'
-import Customers from './components/Customers'
+import Home from './components/Home';
+import Search from './components/Search';
+import Library from './components/Library';
+import Customers from './components/Customers';
+import axios from 'axios';
 import './App.css';
 
 import {
@@ -12,6 +13,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 
 class App extends Component {
 
@@ -22,9 +24,32 @@ class App extends Component {
       currentMovie: undefined, // instance of customer
       movieList: [],
       customerList: [],
+      error: '',
     }
   }
 
+
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/movies')
+    .then((response) => {
+      this.setState({movieList: response.data});
+      // console.log(response.data)
+    })
+    .catch((error) => {
+      this.setState({error: error.message}); 
+    });
+
+    axios.get('http://localhost:3000/customers')
+    .then((response) => {
+      this.setState({customerList: response.data});
+    })
+    .catch((error) => {
+      this.setState({error: error.message}); //maybe do a push to maintain both messages 
+    });
+
+  }
+  
   render() {
     return (
       <Router>
@@ -53,7 +78,8 @@ class App extends Component {
               <Search />
             </Route>
             <Route path="/customers">
-              <Customers />
+              <Customers customerList={this.state.customerList} />
+              {/* //selectCustomerCallback} */}
             </Route>
             <Route path="/library">
               <Library />

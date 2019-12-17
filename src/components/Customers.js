@@ -1,8 +1,24 @@
 import React from 'react';
+import Customer from './Customer';
 // import PropTypes from 'prop-types';
 
-const Customers = () => {
-  return <h2>Customers</h2>;
+
+const parseCustomers = (customers) => {
+  return customers.map((customer) => {
+    return <Customer
+      key={customer.id}
+      {...customer}
+      // selectCustomerCallback={props.selectCustomerCallback} // will be another prop passed in
+      />
+  });
 }
 
-export default Customers
+const Customers = ({customerList}) => { // selectCustomerCallback
+  return(
+    <div>
+      {parseCustomers(customerList)}
+    </div>
+  )
+}
+
+export default Customers;
