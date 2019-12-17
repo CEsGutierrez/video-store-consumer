@@ -2,20 +2,20 @@ import React from 'react';
 import Movie from './Movie';
 // import PropTypes from 'prop-types';
 
-const parseMovies = (movies) => {
+const parseMovies = (movies, selectMovieCallback) => {
   return movies.map((movie) => {
     return <Movie
       key={movie.id}
       {...movie}
-      // selectMovieCallback={props.selectMovieCallback} // will be another prop passed in
+      selectMovieCallback={selectMovieCallback}
       />
   });
 }
 
-const Library = ({movieList}) => {
+const Library = ({movieList, selectMovieCallback}) => {
   return(
     <div>
-      {parseMovies(movieList)}
+      {parseMovies(movieList, selectMovieCallback)}
     </div>
   )
 }

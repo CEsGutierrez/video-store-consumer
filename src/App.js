@@ -47,6 +47,19 @@ class App extends Component {
     });
 
   }
+
+  selectItem =(itemId, typeList, currentType) => {
+    const updatedState = {}
+    const list = this.state[typeList]
+
+    const selected = list.find((item) => {
+      return item.id === itemId;
+    })
+    
+    updatedState[currentType] = selected
+
+    this.setState(updatedState);
+  }
   
   render() {
     return (
@@ -68,6 +81,10 @@ class App extends Component {
               </li>
             </ul>
           </nav>
+          <section>
+            <h1>Current Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}</h1>
+            <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
+          </section>
   
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
@@ -76,11 +93,11 @@ class App extends Component {
               <Search />
             </Route>
             <Route path="/customers">
-              <Customers customerList={this.state.customerList} />
+              <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
               {/* //selectCustomerCallback} */}
             </Route>
             <Route path="/library">
-              <Library movieList={this.state.movieList}/>
+              <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem}/>
             </Route>
             <Route path="/">
               <Home />
@@ -90,23 +107,6 @@ class App extends Component {
       </Router>
     );
   }
-  
-
-
-// original render 
-    // return (
-    //   <div className="App">
-    //     <header className="App-header">
-    //       <img src={logo} className="App-logo" alt="logo" />
-    //       <h1 className="App-title">Welcome to React</h1>
-    //     </header>
-    //     <p className="App-intro">
-    //       To get started, edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //   </div>
-    // );
-
-
 
 }
 

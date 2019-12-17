@@ -3,20 +3,20 @@ import Customer from './Customer';
 // import PropTypes from 'prop-types';
 
 
-const parseCustomers = (customers) => {
+const parseCustomers = (customers, selectCustomerCallback) => {
   return customers.map((customer) => {
     return <Customer
       key={customer.id}
       {...customer}
-      // selectCustomerCallback={props.selectCustomerCallback} // will be another prop passed in
+      selectCustomerCallback={selectCustomerCallback}
       />
   });
 }
 
-const Customers = ({customerList}) => { // selectCustomerCallback
+const Customers = ({customerList, selectCustomerCallback}) => { // selectCustomerCallback
   return(
     <div>
-      {parseCustomers(customerList)}
+      {parseCustomers(customerList, selectCustomerCallback)}
     </div>
   )
 }
