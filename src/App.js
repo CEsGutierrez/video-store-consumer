@@ -118,6 +118,25 @@ class App extends Component {
       this.setState({error: error.message});
     });
   }
+
+  createRental = () => {
+    let dueDate = new Date();
+    dueDate.setDate(new Date().getDate()+7);
+    console.log(dueDate)
+    if (this.state.currentMovie === undefined || this.state.currentCustomer === undefined) {
+      console.log('Need a customer and movie')
+      return
+    }
+
+    axios.post(`http://localhost:3000/rentals/${this.state.currentMovie.title}/check-out`, {customer_id: this.state.currentCustomer.id, due_date: dueDate} )
+    .then((response) => {
+      console.log(response.data)
+      console.log('successful rental!')
+    })
+    .catch((error) => {
+      this.setState({error: error.message});
+    });
+  }
   
   render() {
     return (
@@ -156,7 +175,7 @@ class App extends Component {
               <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem}/>
             </Route>
             <Route path="/">
-              <Home />
+              <Home createRentalCallback={this.createRental}/>
             </Route>
           </Switch>
         </div>
