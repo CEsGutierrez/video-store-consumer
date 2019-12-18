@@ -33,12 +33,32 @@ class Search extends Component {
       });
     }
   }
+
+  allResults = () => {
+    const theResults = this.props.searchResults.map((result, i) => {
+      return (
+        <div key={i}>
+          <p> Title: {result.title} </p>
+          <p> Overview: {result.overview} </p>
+          <p> Release Date: {result.release_date} </p>
+          <p> Image URL: {result.image_url} </p>
+          <p> External ID: {result.external_id} </p>
+          <button
+          // className="btn btn-primary pet-card--select-pet-btn"
+          onClick={() => { this.props.addMovieCallback(result) }}
+          >
+          Add to Library
+          </button>
+        </div>
+      )
+    })
+    return theResults
+  }
     
   render () {
     return (
       <div>
         <form className="new-pet-form" onSubmit={this.onSubmitHandler}>
-          <h3>Search</h3>
           <div>
             <label className="" htmlFor="search">Search: </label>
             <input
@@ -53,11 +73,11 @@ class Search extends Component {
             className=""
             type="submit"
             name="submit"
-            value="Search"
+            value="Submit"
             onClick={this.onSubmitHandler}
           />
         </form>
-        <section> {this.props.searchResults.length !== 0 ? this.props.searchResults[0].title : ''} </section>
+        <section> {this.props.searchResults.length !== 0 ? this.allResults() : ''} </section>
       </div>
     )
   }

@@ -71,6 +71,28 @@ class App extends Component {
       this.setState({error: error.message}); //maybe do a push to maintain both messages 
     });
   }
+
+  addMovie = (newMovie) => {
+    const movieList = this.state.movieList
+    let i;
+    for (i = 0; i < movieList.length; i++) {
+      if (movieList[i].external_id === newMovie.external_id) {
+        console.log('already in library')
+        return ''
+      }
+    } axios.post('http://localhost:3000/movies')
+    .then((response) => {
+      const updatedData = this.state.movieList;
+      updatedData.push(response.data);
+      this.setState({
+        movieList: updatedData,
+        error: '',
+      });
+    })
+    .catch((error) => {
+      this.setState({error: error.message});
+    });
+  }
   
   render() {
     return (
@@ -99,7 +121,7 @@ class App extends Component {
   
           <Switch>
             <Route path="/search">
-              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults}/>
+              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie}/>
             </Route>
             <Route path="/customers">
               <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
