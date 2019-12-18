@@ -1,14 +1,21 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const Home = ({createRentalCallback}) => {
+const Home = ({createRentalCallback, resetMessageCallback}) => {
+  
+  // const componentDidMount = () => {
+  //   resetMessageCallback()
+  // }
+  
   return (
-    <button
-      // className="btn btn-primary pet-card--select-pet-btn"
-      onClick={createRentalCallback}
-      >
-      Create a rental!
-    </button>
+    <div>
+      <button
+        // className="btn btn-primary pet-card--select-pet-btn"
+        onClick={createRentalCallback}
+        >
+        Create a rental!
+      </button>
+    </div>
   )
 }
 

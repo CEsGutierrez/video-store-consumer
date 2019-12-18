@@ -26,8 +26,7 @@ class App extends Component {
       customerList: [],
       searchResults: [],
       error: '',
-      alreadyInLibraray: false,
-      successfullyAdded: false,
+      success: '',
     }
   }
 
@@ -48,7 +47,6 @@ class App extends Component {
     .catch((error) => {
       this.setState({error: error.message}); //maybe do a push to maintain both messages 
     });
-
   }
 
   selectItem = (itemId, typeList, currentType) => {
@@ -74,18 +72,18 @@ class App extends Component {
     });
   }
 
-  resetMessage= () => {
+  resetMessage = () => {
     this.setState({
-      alreadyInLibrary: false,
-      successMessage: false,
+      error: '',
+      success: '',
     })
   }
 
   displayMessage = () => {
-    if (this.state.alreadyInLibrary === true) {
-      return <h1>Already in library!</h1>
-    } else if (this.state.successMessage === true) {
-      return <h1>Successfully added to library!</h1>
+    if (this.state.error !== '') {
+      return <h1>{this.state.error}</h1>
+    } else if (this.state.success !== '') {
+      return <h1>{this.state.success}</h1>
     } else {
       return ''
     }
@@ -98,8 +96,8 @@ class App extends Component {
       if (movieList[i].external_id === newMovie.external_id) {
         console.log('already in library')
         this.setState({
-          alreadyInLibrary: true,
-          successMessage: false,
+          error: 'Error! This movie is already in the library',
+          success: ''
         })
         return
       }
@@ -110,8 +108,7 @@ class App extends Component {
       this.setState({
         movieList: updatedData,
         error: '',
-        alreadyInLibraray: false,
-        successMessage: true,
+        success: 'Successfully added movie to library'
       });
     })
     .catch((error) => {
@@ -122,16 +119,17 @@ class App extends Component {
   createRental = () => {
     let dueDate = new Date();
     dueDate.setDate(new Date().getDate()+7);
-    console.log(dueDate)
     if (this.state.currentMovie === undefined || this.state.currentCustomer === undefined) {
-      console.log('Need a customer and movie')
+      this.setState({
+        error: 'Error! You must have both a customer and movie selected to create a rental.'
+      })
       return
     }
-
     axios.post(`http://localhost:3000/rentals/${this.state.currentMovie.title}/check-out`, {customer_id: this.state.currentCustomer.id, due_date: dueDate} )
-    .then((response) => {
-      console.log(response.data)
-      console.log('successful rental!')
+    .then(() => {
+      this.setState({
+        success: 'Successfully created rental'
+      })
     })
     .catch((error) => {
       this.setState({error: error.message});
@@ -161,11 +159,12 @@ class App extends Component {
           <section>
             <h1>Current Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}</h1>
             <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
+            {this.displayMessage()}
           </section>
   
           <Switch>
             <Route path="/search">
-              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} displayMessageCallback={this.displayMessage} resetMessageCallback={this.resetMessage}/>
+              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/customers">
               <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
@@ -175,7 +174,7 @@ class App extends Component {
               <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem}/>
             </Route>
             <Route path="/">
-              <Home createRentalCallback={this.createRental}/>
+              <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage}/>
             </Route>
           </Switch>
         </div>

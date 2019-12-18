@@ -63,7 +63,6 @@ class Search extends Component {
   render () {
     return (
       <div>
-        <section>{this.props.displayMessageCallback()}</section>
         <form className="new-pet-form" onSubmit={this.onSubmitHandler}>
           <div>
             <label className="" htmlFor="search">Search: </label>
