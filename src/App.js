@@ -101,7 +101,13 @@ class App extends Component {
         })
         return
       }
-    } axios.post('http://localhost:3000/movies', newMovie)
+    } 
+    
+    let improvedMovie = newMovie
+    newMovie["inventory"] = 1 
+    
+    axios.post('http://localhost:3000/movies', improvedMovie)
+    
     .then((response) => {
       const updatedData = this.state.movieList;
       updatedData.push(response.data);
