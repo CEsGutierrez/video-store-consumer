@@ -12,9 +12,10 @@ const parseMovies = (movies, selectMovieCallback) => {
   });
 }
 
-const Library = ({movieList, selectMovieCallback}) => {
+const Library = ({movieList, selectMovieCallback, resetMessageCallback}) => {
   return(
     <div>
+      {resetMessageCallback()}
       {parseMovies(movieList, selectMovieCallback)}
     </div>
   )

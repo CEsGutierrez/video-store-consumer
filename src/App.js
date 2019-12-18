@@ -73,10 +73,12 @@ class App extends Component {
   }
 
   resetMessage = () => {
-    this.setState({
-      error: '',
-      success: '',
-    })
+    if (this.state.error !== '' || this.state.success !== '') {
+      this.setState({
+        error: '',
+        success: '',
+      })
+    };
   }
 
   displayMessage = () => {
@@ -173,11 +175,10 @@ class App extends Component {
               <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/customers">
-              <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
-              {/* //selectCustomerCallback} */}
+              <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/library">
-              <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem}/>
+              <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/">
               <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage}/>

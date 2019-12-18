@@ -13,9 +13,10 @@ const parseCustomers = (customers, selectCustomerCallback) => {
   });
 }
 
-const Customers = ({customerList, selectCustomerCallback}) => { // selectCustomerCallback
+const Customers = ({customerList, selectCustomerCallback, resetMessageCallback}) => { // selectCustomerCallback
   return(
     <div>
+      {resetMessageCallback()}
       {parseCustomers(customerList, selectCustomerCallback)}
     </div>
   )
