@@ -12,6 +12,10 @@ class Search extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.resetMessageCallback()
+  }
+
   onInputChange = (event) => {
     const updatedState = {};
 
@@ -31,6 +35,7 @@ class Search extends Component {
       this.setState({
         searchTerm: '',
       });
+
     }
   }
 
@@ -58,6 +63,7 @@ class Search extends Component {
   render () {
     return (
       <div>
+        <section>{this.props.displayMessageCallback()}</section>
         <form className="new-pet-form" onSubmit={this.onSubmitHandler}>
           <div>
             <label className="" htmlFor="search">Search: </label>

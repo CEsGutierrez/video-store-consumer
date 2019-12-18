@@ -26,6 +26,8 @@ class App extends Component {
       customerList: [],
       searchResults: [],
       error: '',
+      alreadyInLibraray: false,
+      successfullyAdded: false,
     }
   }
 
@@ -72,21 +74,44 @@ class App extends Component {
     });
   }
 
+  resetMessage= () => {
+    this.setState({
+      alreadyInLibrary: false,
+      successMessage: false,
+    })
+  }
+
+  displayMessage = () => {
+    if (this.state.alreadyInLibrary === true) {
+      return <h1>Already in library!</h1>
+    } else if (this.state.successMessage === true) {
+      return <h1>Successfully added to library!</h1>
+    } else {
+      return ''
+    }
+  }
+
   addMovie = (newMovie) => {
     const movieList = this.state.movieList
     let i;
     for (i = 0; i < movieList.length; i++) {
       if (movieList[i].external_id === newMovie.external_id) {
         console.log('already in library')
-        return ''
+        this.setState({
+          alreadyInLibrary: true,
+          successMessage: false,
+        })
+        return
       }
-    } axios.post('http://localhost:3000/movies')
+    } axios.post('http://localhost:3000/movies', newMovie)
     .then((response) => {
       const updatedData = this.state.movieList;
       updatedData.push(response.data);
       this.setState({
         movieList: updatedData,
         error: '',
+        alreadyInLibraray: false,
+        successMessage: true,
       });
     })
     .catch((error) => {
@@ -121,7 +146,7 @@ class App extends Component {
   
           <Switch>
             <Route path="/search">
-              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie}/>
+              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} displayMessageCallback={this.displayMessage} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/customers">
               <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} />
