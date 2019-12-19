@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import './Home.css'
 
 const Home = ({createRentalCallback, resetMessageCallback}) => {
   
@@ -8,7 +9,7 @@ const Home = ({createRentalCallback, resetMessageCallback}) => {
   }, [resetMessageCallback]);
 
   return (
-    <div>
+    <div class="entire-page">
       <button
         // className="btn btn-primary pet-card--select-pet-btn"
         onClick={createRentalCallback}

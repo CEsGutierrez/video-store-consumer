@@ -22,7 +22,40 @@
   font-size: large;
 }
 
+.nav {
+  color: blue;
+  text-decoration: none;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  padding-left: 2em;
+}
+
+.nav ul li a:visited {
+  text-decoration: none;
+  color: black
+}
+
+.nav ul {
+  list-style-type: none;
+}
+
+.nav {
+  background-color: #547365;
+}
+
+.nav ul li{
+  display: inline;
+
+}
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* .page {
+  background-color: black;
+} */
