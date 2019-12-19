@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
-// searchExternalCallback, searchResults
-
 class Search extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +38,7 @@ class Search extends Component {
   }
 
   allResults = () => {
-    const theResults = this.props.searchResults.map((result, i) => {
+    const theResults = this.props.searchResultsCallback.map((result, i) => {
       return (
         <div key={i}>
           <p> Title: {result.title} </p>
@@ -82,7 +80,7 @@ class Search extends Component {
             onClick={this.onSubmitHandler}
           />
         </form>
-        <section> {this.props.searchResults.length !== 0 ? this.allResults() : ''} </section>
+        <section> {this.props.searchResultsCallback.length !== 0 ? this.allResults() : ''} </section>
       </div>
     )
   }

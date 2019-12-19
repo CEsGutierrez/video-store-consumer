@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search that it matches the existing snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <form
+      class="new-pet-form"
+    >
+      <div>
+        <label
+          class=""
+          for="search"
+        >
+          Search: 
+        </label>
+        <input
+          id="search"
+          name="searchTerm"
+          placeholder="Enter a movie title"
+          value=""
+        />
+      </div>
+      <input
+        class=""
+        name="submit"
+        type="submit"
+        value="Submit"
+      />
+    </form>
+    <section>
+        
+    </section>
+  </div>
+</DocumentFragment>
+`;

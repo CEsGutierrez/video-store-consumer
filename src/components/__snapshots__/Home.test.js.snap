@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home that it matches the existing snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <button>
+      Create a rental!
+    </button>
+  </div>
+</DocumentFragment>
+`;

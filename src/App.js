@@ -172,7 +172,7 @@ class App extends Component {
   
           <Switch>
             <Route path="/search">
-              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
+              <Search searchExternalCallback={this.searchExternal} searchResultsCallback={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
             </Route>
             <Route path="/customers">
               <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
