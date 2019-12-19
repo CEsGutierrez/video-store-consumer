@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Search extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Search extends Component {
   }
 
   allResults = () => {
-    const theResults = this.props.searchResultsCallback.map((result, i) => {
+    const theResults = this.props.searchResults.map((result, i) => {
       return (
         <div key={i}>
           <p> Title: {result.title} </p>
@@ -80,10 +80,17 @@ class Search extends Component {
             onClick={this.onSubmitHandler}
           />
         </form>
-        <section> {this.props.searchResultsCallback.length !== 0 ? this.allResults() : ''} </section>
+        <section> {this.props.searchResults.length !== 0 ? this.allResults() : ''} </section>
       </div>
     )
   }
 }
+
+Search.propTypes = {
+  searchExternalCallback: PropTypes.func.isRequired,
+  searchResults: PropTypes.array.isRequired,
+  addMovieCallback: PropTypes.func.isRequired,
+  resetMessageCallback: PropTypes.func.isRequired,
+};
 
 export default Search

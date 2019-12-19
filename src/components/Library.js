@@ -1,6 +1,6 @@
 import React from 'react';
 import Movie from './Movie';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const parseMovies = (movies, selectMovieCallback) => {
   return movies.map((movie) => {
@@ -20,5 +20,11 @@ const Library = ({movieList, selectMovieCallback, resetMessageCallback}) => {
     </div>
   )
 }
+
+Library.propTypes = {
+  movieList: PropTypes.array.isRequired,
+  selectMovieCallback: PropTypes.func.isRequired,
+  resetMessageCallback: PropTypes.func.isRequired,
+};
 
 export default Library;

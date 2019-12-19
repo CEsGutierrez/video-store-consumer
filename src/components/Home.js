@@ -1,11 +1,7 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Home = ({createRentalCallback, resetMessageCallback}) => {
-  
-  // const componentDidMount = () => {
-  //   resetMessageCallback()
-  // }
   
   return (
     <div>
@@ -19,5 +15,10 @@ const Home = ({createRentalCallback, resetMessageCallback}) => {
     </div>
   )
 }
+
+Home.propTypes = {
+  createRentalCallback: PropTypes.func.isRequired,
+  resetMessageCallback: PropTypes.func.isRequired,
+};
 
 export default Home

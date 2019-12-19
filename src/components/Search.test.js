@@ -8,7 +8,7 @@ describe('Search', () => {
     const { asFragment } = render(
       <Search
       searchExternalCallback={() => { }}
-      searchResultsCallback={() => { }}
+      searchResults={[]}
       addMovieCallback={() => { }}
       resetMessageCallback={() => { }}
       />

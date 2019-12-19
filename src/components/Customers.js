@@ -1,6 +1,6 @@
 import React from 'react';
 import Customer from './Customer';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 
 const parseCustomers = (customers, selectCustomerCallback) => {
@@ -21,5 +21,11 @@ const Customers = ({customerList, selectCustomerCallback, resetMessageCallback})
     </div>
   )
 }
+
+Customers.propTypes = {
+  customerList: PropTypes.array.isRequired,
+  selectCustomerCallback: PropTypes.func.isRequired,
+  resetMessageCallback: PropTypes.func.isRequired,
+};
 
 export default Customers;
