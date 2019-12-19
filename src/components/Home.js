@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 const Home = ({createRentalCallback, resetMessageCallback}) => {
   
+  useEffect(() => {
+    resetMessageCallback()
+  }, [resetMessageCallback]);
+
   return (
     <div>
-      {resetMessageCallback()}
       <button
         // className="btn btn-primary pet-card--select-pet-btn"
         onClick={createRentalCallback}

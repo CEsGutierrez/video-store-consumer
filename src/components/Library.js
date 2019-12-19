@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Movie from './Movie';
 import PropTypes from 'prop-types';
 
@@ -13,9 +13,12 @@ const parseMovies = (movies, selectMovieCallback) => {
 }
 
 const Library = ({movieList, selectMovieCallback, resetMessageCallback}) => {
+  useEffect(() => {
+    resetMessageCallback()
+  }, [resetMessageCallback]);
+  
   return(
     <div>
-      {resetMessageCallback()}
       {parseMovies(movieList, selectMovieCallback)}
     </div>
   )

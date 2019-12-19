@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Customer from './Customer';
 import PropTypes from 'prop-types';
 
@@ -14,9 +14,12 @@ const parseCustomers = (customers, selectCustomerCallback) => {
 }
 
 const Customers = ({customerList, selectCustomerCallback, resetMessageCallback}) => { // selectCustomerCallback
+  useEffect(() => {
+    resetMessageCallback()
+  }, [resetMessageCallback]);
+
   return(
     <div>
-      {resetMessageCallback()}
       {parseCustomers(customerList, selectCustomerCallback)}
     </div>
   )

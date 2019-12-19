@@ -73,12 +73,10 @@ class App extends Component {
   }
 
   resetMessage = () => {
-    if (this.state.error !== '' || this.state.success !== '') {
-      this.setState({
-        error: '',
-        success: '',
-      })
-    };
+    this.setState({
+      error: '',
+      success: '',
+    })
   }
 
   displayMessage = () => {
