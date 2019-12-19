@@ -9,7 +9,7 @@ const Home = ({createRentalCallback, resetMessageCallback}) => {
   }, [resetMessageCallback]);
 
   return (
-    <div class="entire-page">
+    <div className="entire-page">
       <button
         // className="btn btn-primary pet-card--select-pet-btn"
         onClick={createRentalCallback}

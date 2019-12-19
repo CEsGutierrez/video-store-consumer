@@ -6,6 +6,7 @@ import Library from './components/Library';
 import Customers from './components/Customers';
 import axios from 'axios';
 import './App.css';
+import {ParallaxProvider} from 'react-scroll-parallax'
 
 import {
   BrowserRouter as Router,
@@ -144,46 +145,50 @@ class App extends Component {
   
   render() {
     return (
-      <Router class = "page">
-        <div>
-          <nav class="nav">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/library">Library</Link>
-              </li>
-              <li>
-                <Link to="/search">Search</Link>
-              </li>
-              <li>
-                <Link to="/customers">Customers</Link>
-              </li>
-            </ul>
-          </nav>
-          <section>
-            <h1>Current Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}</h1>
-            <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
-            {this.displayMessage()}
-          </section>
-  
-          <Switch>
-            <Route path="/search">
-              <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
-            </Route>
-            <Route path="/customers">
-              <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
-            </Route>
-            <Route path="/library">
-              <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
-            </Route>
-            <Route path="/">
-              <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage}/>
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+      <ParallaxProvider>
+        <Router className = "page">
+          <div>
+            <nav className ="nav">
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/library">Library</Link>
+                </li>
+                <li>
+                  <Link to="/search">Search</Link>
+                </li>
+                <li>
+                  <Link to="/customers">Customers</Link>
+                </li>
+              </ul>
+            </nav>
+            <section>
+              <h1>Current Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}</h1>
+              <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
+              {this.displayMessage()}
+            </section>
+    
+            <ParallaxProvider>
+              <Switch>
+                <Route path="/search">
+                  <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
+                </Route>
+                <Route path="/customers">
+                  <Customers customerList={this.state.customerList} selectCustomerCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
+                </Route>
+                <Route path="/library">
+                  <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
+                </Route>
+                <Route path="/">
+                  <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage}/>
+                </Route>
+              </Switch>
+            </ParallaxProvider>
+          </div>
+        </Router>
+      </ParallaxProvider>
     );
   }
 
