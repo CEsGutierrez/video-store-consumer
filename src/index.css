@@ -3,8 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-image: url("national4.jpg");
-  background-size: 100%
-
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
 }
 
 h1 {
