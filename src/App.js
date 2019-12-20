@@ -80,9 +80,9 @@ class App extends Component {
 
   displayMessage = () => {
     if (this.state.error !== '') {
-      return <h1>{this.state.error}</h1>
+      return <h2>{this.state.error}</h2>
     } else if (this.state.success !== '') {
-      return <h1>{this.state.success}</h1>
+      return <h2>{this.state.success}</h2>
     } else {
       return ''
     }
@@ -145,6 +145,9 @@ class App extends Component {
     return (
         <Router className = "page">
           <div>
+            <div className = "site-title">
+              <h1>Nicolas' Cage</h1>
+            </div>
             <nav className ="nav">
               <ul>
                 <li>

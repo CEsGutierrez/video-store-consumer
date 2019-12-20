@@ -21,7 +21,7 @@ const Customers = ({customerList, selectCustomerCallback, resetMessageCallback})
 
   return(
     <div>
-      <h1 className='pageHeader'> Customers </h1>
+      <h2 className='pageHeader'> Customers </h2>
       <div className='customersList'>
         {parseCustomers(customerList, selectCustomerCallback)}
       </div>

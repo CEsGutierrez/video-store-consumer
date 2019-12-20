@@ -11,9 +11,14 @@ body {
 
 h1 {
   font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Courier New', Courier, monospace;
   margin-left: 3em;
 }
 
 .pageHeader {
-  margin-left: 2.2em;
+  margin-left: 3em;
 }

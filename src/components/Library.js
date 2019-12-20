@@ -20,7 +20,7 @@ const Library = ({movieList, selectMovieCallback, resetMessageCallback}) => {
   
   return(
     <div> 
-      <h1 className='pageHeader'> Library </h1>
+      <h2 className='pageHeader'> Library </h2>
       <div className='libraryList'>
         {parseMovies(movieList, selectMovieCallback)}
       </div>
