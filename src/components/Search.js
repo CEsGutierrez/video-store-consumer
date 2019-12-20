@@ -41,18 +41,18 @@ class Search extends Component {
   allResults = () => {
     const theResults = this.props.searchResults.map((result, i) => {
       return (
-        <div key={i}>
-          <p> Title: {result.title} </p>
-          <p> Overview: {result.overview} </p>
-          <p> Release Date: {result.release_date} </p>
-          <p> Image URL: {result.image_url} </p>
-          <p> External ID: {result.external_id} </p>
-          <button
-          // className='search__content-button'
+        <div key={i} className='search-card'>
+          <p></p>
+          <p> <strong>{result.title}</strong></p>
+          <img src={result.image_url} className='search-image' alt='Movie cover art'/>
+          <p> <strong>Overview: </strong>{result.overview} </p>
+          <p> <strong>Release Date: </strong>{result.release_date} </p>
+          <button className='add-movie-button'
           onClick={() => { this.props.addMovieCallback(result) }}
           >
           Add to Library
           </button>
+          <p></p>
         </div>
       )
     })

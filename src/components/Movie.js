@@ -4,6 +4,7 @@ import './Card.css';
 
 const Movie = ({id, title, overview, release_date, image_url, external_id, selectMovieCallback}) => {
   return (
+
     <div className='card'>
       <section className='card__content'>
         <img src={image_url} className='card__content-image' alt='Movie cover art'/>

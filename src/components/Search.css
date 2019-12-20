@@ -21,6 +21,12 @@
   align-items: center;
 }
 
+.search-card {
+  background-color:  rgba(181, 181, 181, 50%);
+  padding: 1em;
+  margin-top: 1em;
+}
+
 .search__content {
   grid-column-start: 2;
 
@@ -31,6 +37,7 @@
   text-align: center;
   font-weight: 100;
   overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .search__content-bar {
@@ -64,4 +71,14 @@
 
 .search__content-button:hover {
   cursor: pointer;
+}
+
+.add-movie-button {
+  margin-top: 15px;
+  align-self: center;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(181, 181, 181);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
 }

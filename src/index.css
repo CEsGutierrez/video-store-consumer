@@ -6,7 +6,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: right top;
-  background-attachment: fixed;
+  background-attachment: fixed; /* This creates limitations for displays, but is necessary for parallax */
 }
 
 h1 {

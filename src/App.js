@@ -146,7 +146,7 @@ class App extends Component {
         <Router className = "page">
           <div>
             <div className = "site-title">
-              <h1>Nicolas' Cage</h1>
+              <h1>Nicolas's Cage</h1>
             </div>
             <nav className ="nav">
               <ul>
