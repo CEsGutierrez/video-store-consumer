@@ -4,6 +4,15 @@ exports[`Home that it matches the existing snapshot 1`] = `
 <DocumentFragment>
   <div>
     <div
+      class="landing-image-container"
+    >
+      <img
+        alt="Nicolas Cage"
+        class="landing-image"
+        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0184337d-c90d-4e79-b1da-88281780b75f/d9qgqbf-41738808-68d9-4972-bbfa-86b0f73a77c3.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAxODQzMzdkLWM5MGQtNGU3OS1iMWRhLTg4MjgxNzgwYjc1ZlwvZDlxZ3FiZi00MTczODgwOC02OGQ5LTQ5NzItYmJmYS04NmIwZjczYTc3YzMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Wghrk1OFXAtLI9cLR2Rc1YeV1M_7PaJS2TyMGAUocio"
+      />
+    </div>
+    <div
       class="homeList"
     />
     <div
