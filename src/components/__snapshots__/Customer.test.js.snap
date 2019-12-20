@@ -2,10 +2,34 @@
 
 exports[`Customer that it matches the existing snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    <button>
-      Select
-    </button>
+  <div
+    class="card"
+  >
+    <section
+      class="card__content"
+    >
+      <img
+        alt="Nicolas Cage"
+        class="card__content-image"
+        src="https://i1.sndcdn.com/avatars-000139920883-maf14v-t500x500.jpg"
+      />
+      <section
+        class="card__content-text"
+      />
+      <section
+        class="card__content-text"
+      />
+      <section
+        class="card__content-text"
+      >
+        Credit: $3.00
+      </section>
+      <button
+        class="card__select"
+      >
+        Select
+      </button>
+    </section>
   </div>
 </DocumentFragment>
 `;

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import Home from './components/Home';
 import Search from './components/Search';
 import Library from './components/Library';
 import Customers from './components/Customers';
 import axios from 'axios';
 import './App.css';
-import {ParallaxProvider} from 'react-scroll-parallax'
 
 import {
   BrowserRouter as Router,
@@ -35,7 +33,6 @@ class App extends Component {
     axios.get('http://localhost:3000/movies')
     .then((response) => {
       this.setState({movieList: response.data});
-      // console.log(response.data)
     })
     .catch((error) => {
       this.setState({error: error.message}); 
@@ -77,6 +74,7 @@ class App extends Component {
     this.setState({
       error: '',
       success: '',
+      searchResults: [],
     })
   }
 
@@ -145,7 +143,6 @@ class App extends Component {
   
   render() {
     return (
-      <ParallaxProvider>
         <Router className = "page">
           <div>
             <nav className ="nav">
@@ -162,15 +159,26 @@ class App extends Component {
                 <li>
                   <Link to="/customers">Customers</Link>
                 </li>
+                {this.state.currentMovie ?
+                <p>
+                  <li className='currentItem'>
+                    Selected Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}
+                  </li>
+                </p> : null
+                }
+                {this.state.currentCustomer ?
+                <p>
+                  <li className='currentItem'>
+                    Selected Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}
+                  </li>
+                </p> : null
+                }
               </ul>
             </nav>
             <section>
-              <h1>Current Movie: {this.state.currentMovie ? this.state.currentMovie.title : ''}</h1>
-              <h1>Current Customer: {this.state.currentCustomer ? this.state.currentCustomer.name : ''}</h1>
               {this.displayMessage()}
             </section>
     
-            <ParallaxProvider>
               <Switch>
                 <Route path="/search">
                   <Search searchExternalCallback={this.searchExternal} searchResults={this.state.searchResults} addMovieCallback={this.addMovie} resetMessageCallback={this.resetMessage}/>
@@ -182,13 +190,11 @@ class App extends Component {
                   <Library movieList={this.state.movieList} selectMovieCallback={this.selectItem} resetMessageCallback={this.resetMessage}/>
                 </Route>
                 <Route path="/">
-                  <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage}/>
+                  <Home createRentalCallback={this.createRental} resetMessageCallback={this.resetMessage} currentCustomer={this.state.currentCustomer} currentMovie={this.state.currentMovie}/>
                 </Route>
               </Switch>
-            </ParallaxProvider>
           </div>
         </Router>
-      </ParallaxProvider>
     );
   }
 

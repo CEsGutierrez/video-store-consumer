@@ -2,33 +2,39 @@
 
 exports[`Search that it matches the existing snapshot 1`] = `
 <DocumentFragment>
-  <div>
-    <form
-      class="new-pet-form"
+  <div
+    class="searchList"
+  >
+    <section
+      class="search"
     >
-      <div>
-        <label
-          class=""
-          for="search"
-        >
-          Search: 
-        </label>
-        <input
-          id="search"
-          name="searchTerm"
-          placeholder="Enter a movie title"
-          value=""
-        />
-      </div>
-      <input
-        class=""
-        name="submit"
-        type="submit"
-        value="Submit"
-      />
-    </form>
-    <section>
-        
+      <section
+        class="search__content"
+      >
+        <form>
+          <div>
+            <label
+              for="search"
+            />
+            <input
+              class="search__content-bar"
+              id="search"
+              name="searchTerm"
+              placeholder="Enter a movie title"
+              value=""
+            />
+          </div>
+          <input
+            class="search__content-button"
+            name="submit"
+            type="submit"
+            value="Search"
+          />
+        </form>
+        <section>
+            
+        </section>
+      </section>
     </section>
   </div>
 </DocumentFragment>

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Customer from './Customer';
 import PropTypes from 'prop-types';
+import './Customers.css';
 
 
 const parseCustomers = (customers, selectCustomerCallback) => {
@@ -20,7 +21,10 @@ const Customers = ({customerList, selectCustomerCallback, resetMessageCallback})
 
   return(
     <div>
-      {parseCustomers(customerList, selectCustomerCallback)}
+      <h1 className='pageHeader'> Customers </h1>
+      <div className='customersList'>
+        {parseCustomers(customerList, selectCustomerCallback)}
+      </div>
     </div>
   )
 }

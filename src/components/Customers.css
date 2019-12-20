@@ -1,0 +1,4 @@
+.customersList {
+  display: flex;
+  flex-wrap: wrap;
+}

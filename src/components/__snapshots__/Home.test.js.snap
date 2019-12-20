@@ -2,12 +2,19 @@
 
 exports[`Home that it matches the existing snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="entire-page"
-  >
-    <button>
-      Create a rental!
-    </button>
+  <div>
+    <div
+      class="homeList"
+    />
+    <div
+      class="homeList"
+    >
+      <button
+        class="rentalButton"
+      >
+        Create a rental!
+      </button>
+    </div>
   </div>
 </DocumentFragment>
 `;

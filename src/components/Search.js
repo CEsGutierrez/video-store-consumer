@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Search.css';
 
 class Search extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ class Search extends Component {
           <p> Image URL: {result.image_url} </p>
           <p> External ID: {result.external_id} </p>
           <button
-          // className="btn btn-primary pet-card--select-pet-btn"
+          // className='search__content-button'
           onClick={() => { this.props.addMovieCallback(result) }}
           >
           Add to Library
@@ -60,27 +61,32 @@ class Search extends Component {
     
   render () {
     return (
-      <div>
-        <form className="new-pet-form" onSubmit={this.onSubmitHandler}>
-          <div>
-            <label className="" htmlFor="search">Search: </label>
-            <input
-              name="searchTerm"
-              id="search"
-              onChange={this.onInputChange}
-              value={this.state.searchTerm}
-              placeholder='Enter a movie title'
-            />
-          </div>
-          <input
-            className=""
-            type="submit"
-            name="submit"
-            value="Submit"
-            onClick={this.onSubmitHandler}
-          />
-        </form>
-        <section> {this.props.searchResults.length !== 0 ? this.allResults() : ''} </section>
+      <div className='searchList'>
+        <section className='search'>
+          <section className='search__content'>
+            <form onSubmit={this.onSubmitHandler}>
+              <div>
+                <label htmlFor="search"></label>
+                <input
+                  className="search__content-bar"
+                  name="searchTerm"
+                  id="search"
+                  onChange={this.onInputChange}
+                  value={this.state.searchTerm}
+                  placeholder='Enter a movie title'
+                />
+              </div>
+              <input
+                className="search__content-button"
+                type="submit"
+                name="submit"
+                value="Search"
+                onClick={this.onSubmitHandler}
+              />
+            </form>
+            <section> {this.props.searchResults.length !== 0 ? this.allResults() : ''} </section>
+          </section>
+        </section>
       </div>
     )
   }

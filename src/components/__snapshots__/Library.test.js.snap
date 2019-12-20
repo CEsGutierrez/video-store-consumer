@@ -2,6 +2,15 @@
 
 exports[`Library that it matches the existing snapshot 1`] = `
 <DocumentFragment>
-  <div />
+  <div>
+    <h1
+      class="pageHeader"
+    >
+       Library 
+    </h1>
+    <div
+      class="libraryList"
+    />
+  </div>
 </DocumentFragment>
 `;

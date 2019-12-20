@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Movie from './Movie';
 import PropTypes from 'prop-types';
+import './Library.css';
 
 const parseMovies = (movies, selectMovieCallback) => {
   return movies.map((movie) => {
@@ -18,8 +19,11 @@ const Library = ({movieList, selectMovieCallback, resetMessageCallback}) => {
   }, [resetMessageCallback]);
   
   return(
-    <div>
-      {parseMovies(movieList, selectMovieCallback)}
+    <div> 
+      <h1 className='pageHeader'> Library </h1>
+      <div className='libraryList'>
+        {parseMovies(movieList, selectMovieCallback)}
+      </div>
     </div>
   )
 }

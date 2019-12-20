@@ -2,6 +2,15 @@
 
 exports[`Customers that it matches the existing snapshot 1`] = `
 <DocumentFragment>
-  <div />
+  <div>
+    <h1
+      class="pageHeader"
+    >
+       Customers 
+    </h1>
+    <div
+      class="customersList"
+    />
+  </div>
 </DocumentFragment>
 `;
